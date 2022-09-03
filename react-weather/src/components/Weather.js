@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Weather.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 export default function Weather() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState([]);
@@ -21,26 +22,41 @@ export default function Weather() {
   const inputChange = (e) => setQuery(e.target.value);
 
   return (
+    <>
     <div className="container">
+      
       <h1>search for a weather</h1>
       <form onSubmit={FormEvent}>
-        <label className="label">Weather Search City</label>
-        <input
-          type="text"
-          placeholder="please enter your country/city"
-          onChange={inputChange}
-        ></input>
-        <button>search</button>
+      <div class="input-group mb-3">
+          <input
+            onChange={inputChange}
+            type="text"
+            class="form-control"
+            placeholder="Enter city/country"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">
+              Button
+            </button>
+          </div>
+          </div>
       </form>
 
-      <div className="h1">
-        <h1>Name : {weather.name}</h1>
-        <h1>Region : {weather.region}</h1>
-        <h1>country : {weather.country}</h1>
-        <h1>localtime : {weather.localtime}</h1>
-        <h1>lon : {weather.lon}</h1>
-        <h1>tz_id : {weather.tz_id}</h1>
+     
       </div>
-    </div>
+
+       <div className="infos">
+       <h4>Name : {weather.name}</h4>
+        <pre>Region : {weather.region}</pre>
+        <pre>country : {weather.country}</pre>
+        <pre>localtime : {weather.localtime}</pre>
+        <pre>lon : {weather.lon}</pre>
+        <pre>tz_id : {weather.tz_id}</pre>
+       </div>
+
+      </>
+   
   );
 }
